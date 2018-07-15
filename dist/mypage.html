@@ -10,6 +10,13 @@
         integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
         crossorigin="anonymous">
     </script>
+    
+    <script src="../assets/javascript/game.js"></script>
+
+    <!-- Styling -->
+    <style>
+      /* body {background-image: } */
+    </style>
   </head>
   <body>
 
@@ -24,26 +31,22 @@
                         <br>
                         Game
                     </div>
-    
-    
-                    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                    </a>
+                    <div class="row">
+                      <div class="columns">
+                        <div class="column">
+                          To play, guess the country of the flag below. Guess atleast 10 to win. 
+                        </div>
+                      </div>
+                    </div>
                 </div>
             <!-- </d> -->
         </nav>
       </div>
       
-      <div class="container">
-
-      <p class="subtitle">
-        Modern CSS framework based on <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox">Flexbox</a>
-      </p>
-
+      <br>
+      <div class="container" style="margin-top:10px;">
       <div class="columns">
-          <div class="column is-three-fifths" style="background-color:yellow; margin-right: 20px; height:400px">
+          <div class="column is-three-fifths" style="background-color:gray; margin-right: 20px; height:400px">
             <div class="row">
               <div>Start by pressing any key to begin</div>
               <div class="columns">
@@ -54,26 +57,26 @@
                       <div class="row">
                         <div class="columns">
                           <div class="column">Wins</div>
-                          <div class="column">0</div>
+                          <div class="column" id="wins">0</div>
                         </div>
                       </div>
 
                       <div class="row">
                         <div class="columns">
-                          <div class="column"> _ _ _ _ _ _ _ </div>
+                          <div class="column" id="blank-spots"> _ _ _ _ _ _ _ </div>
                         </div>
                       </div>
 
                       <div class="row">
                         <div class="columns">
                           <div class="column"> Guess attempts left: </div>
-                          <div class="column"> 10</div>
+                          <div class="column" id="guess-attempts"> 10</div>
                         </div>
                       </div>
 
                       <div class="row">
                           <div class="columns">
-                            <div class="column"> Letters used: </div>
+                            <div class="column" id="letters-used"> Letters used: </div>
                           </div>
                         </div>
 
@@ -83,7 +86,7 @@
                 </div>
             </div>
           </div>
-          <div class="column" style="background-color:green; height:400px">Auto</div>
+          <div class="column" id="flag-column" style="background-color:thistle; height:400px">Flag:</div>
       </div>        
 
       <div class="field">
