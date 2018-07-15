@@ -1,0 +1,31 @@
+{
+  "name": "psychic-game",
+  "version": "1.0.0",
+  "description": "Psychic game, guess the letters",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/osman144/Psychic-Game.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/osman144/Psychic-Game/issues"
+  },
+  "homepage": "https://github.com/osman144/Psychic-Game#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "bulma": "^0.7.1",
+    "css-loader": "^1.0.0",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "node-sass": "^4.9.2",
+    "sass-loader": "^7.0.3",
+    "style-loader": "^0.21.0",
+    "webpack": "^4.16.0",
+    "webpack-cli": "^3.0.8"
+  }
+}

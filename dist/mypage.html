@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>My custom Bulma website</title>
+    <link rel="stylesheet" href="css/mystyles.css">
+
+    <!-- JQuery -->
+    <script
+        src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+        crossorigin="anonymous">
+    </script>
+  </head>
+  <body>
+
+      <div class="container">
+        <nav class="navbar" role="navigation" aria-label="main navigation" style='background-color:wheat; margin-top: 25px'>
+                <div class="navbar-brand">
+                    <a class="navbar-item" href="https://bulma.io">
+                    <img src="https://cdn2.iconfinder.com/data/icons/lawyer-set-square/220/advokat_set-29-128.png" alt="Bulma: a modern CSS framework based on Flexbox">
+                    </a>
+                    <div style="font-size: 40px; color:rgb(120, 147, 179)">
+                        Psychic
+                        <br>
+                        Game
+                    </div>
+    
+    
+                    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    </a>
+                </div>
+            <!-- </d> -->
+        </nav>
+      </div>
+      
+      <div class="container">
+
+      <p class="subtitle">
+        Modern CSS framework based on <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox">Flexbox</a>
+      </p>
+
+      <div class="columns">
+          <div class="column is-three-fifths" style="background-color:yellow; margin-right: 20px; height:400px">
+            <div class="row">
+              <div>Start by pressing any key to begin</div>
+              <div class="columns">
+                  <div class="column">
+                    <div class="box">
+                      <p class="title is-5">Flexible column</p>
+                      <p class="subtitle">This column will take up the remaining space available.</p>
+                      <div class="row">
+                        <div class="columns">
+                          <div class="column">Wins</div>
+                          <div class="column">0</div>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="columns">
+                          <div class="column"> _ _ _ _ _ _ _ </div>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="columns">
+                          <div class="column"> Guess attempts left: </div>
+                          <div class="column"> 10</div>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                          <div class="columns">
+                            <div class="column"> Letters used: </div>
+                          </div>
+                        </div>
+
+
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+          <div class="column" style="background-color:green; height:400px">Auto</div>
+      </div>        
+
+      <div class="field">
+        <p class="control">
+          <span class="select">
+            <select>
+              <option>Select dropdown</option>
+            </select>
+          </span>
+        </p>
+      </div>
+
+      <div class="buttons">
+        <a class="button is-primary">Primary</a>
+        <a class="button is-link">Link</a>
+      </div>
+    </div>
+  </body>
+</html>

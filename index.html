@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Psychic Game</title>
+    <!-- Bulma Components -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
     <link rel="stylesheet" href="./assets/css/style.css">
     <script
         src="https://code.jquery.com/jquery-3.3.1.js"
@@ -12,16 +14,65 @@
         crossorigin="anonymous">
     </script>
     <script src="./assets/javascript/game.js"></script>
+    <!-- Font Awesome -->
+    <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"></script>
     
 </head>
 <body>
-    <header class = "row">
-        <div class = "col-md-12">
-            
-        </div>
-    </header>
+    <nav class="navbar" role="navigation" aria-label="main navigation" style='background-color:wheat'>
+        <d class="container">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="https://bulma.io">
+                <img src="https://cdn2.iconfinder.com/data/icons/lawyer-set-square/220/advokat_set-29-128.png" alt="Bulma: a modern CSS framework based on Flexbox">
+                </a>
+                <div style="font-size: 40px; color:rgb(120, 147, 179)">
+                    Psychic
+                    <br>
+                    Game
+                </div>
+
+
+                <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                </a>
+            </div>
+        </d>
+    </nav>
 
     <main>
+
+    <div class='container' style='background-color:gray; margin-top: 50px;'>
+        <div class="columns">
+            <div class="column is-9">
+                Welcome
+            </div>
+            <div class='column is-3'>
+                Mario 
+                
+            </div>
+            
+        </div>
+        
+
+
+    </div>
+    </main>
+
+    <!-- <footer class="footer">
+        <div class="content has-text-centered">
+            <p>
+            <strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is licensed
+            <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
+            is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+            </p>
+        </div>
+    </footer> -->
+
+
+    </div>
+    <main id='doc'>
         <div style="font-size: 40px; padding-bottom:10px"> The Psychic Game</div>
         <br>
         <div style = "color: blue; font-size:30px;">
@@ -39,7 +90,7 @@
         Losses:
         </div>
         <br>
-        <div id = 'guessesleft' style= "color:red; font-size:25px">
+        <div id = 'guessesLeft' style= "color:red; font-size:25px">
         Guesses left:
         </div>
         <br>
@@ -49,7 +100,6 @@
     </main>
 
     <br>
-
     
 </body>
 </html>
