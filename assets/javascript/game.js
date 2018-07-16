@@ -1,130 +1,132 @@
 'use strict'; 
 
-// 15 Flags Each
-const flagGuess = [
-    {name:'Andorra',
-    flagImage: 'http://flags.fmcdn.net/data/flags/w580/ad.png'
-    },
-    {name:'Azerbaijan',
-    flagImage: 'http://flags.fmcdn.net/data/flags/w580/az.png'
-    },
-    {name:'Argentina',
-    flagImage: 'http://flags.fmcdn.net/data/flags/w580/ar.png'
-    },
-    {name:'Brazil',
-    flagImage: 'http://flags.fmcdn.net/data/flags/w580/br.png'
-    },
-    {name:'Canada',
-    flagImage: 'http://flags.fmcdn.net/data/flags/w580/ca.png'
-    },
-    {name:'France',
-    flagImage: 'http://flags.fmcdn.net/data/flags/w580/fr.png'
-    },
-    {name:'Germany',
-    flagImage: 'http://flags.fmcdn.net/data/flags/w580/de.png'
-    },
-    {name:'Ghana',
-    flagImage: 'http://flags.fmcdn.net/data/flags/w580/gh.png'
-    },
-    {name:'Greece',
-    flagImage: 'http://flags.fmcdn.net/data/flags/w580/gr.png'
-    },
-    {name:'India',
-    flagImage: 'http://flags.fmcdn.net/data/flags/w580/in.png'
-    },
-    {name:'Italy',
-    flagImage: 'http://flags.fmcdn.net/data/flags/w580/it.png'
-    },
-    {name:'Japan',
-    flagImage: 'http://flags.fmcdn.net/data/flags/w580/jp.png'
-    },
-    {name:'Kenya',
-    flagImage: 'http://flags.fmcdn.net/data/flags/w580/ke.png'
-    },
-    {name:'The Philippines',
-    flagImage: 'http://flags.fmcdn.net/data/flags/w580/ph.png'
-    },
-    {name:'Turkey',
-    flagImage: 'http://flags.fmcdn.net/data/flags/w580/tr.png'
-    }
-]
-
-let wins = 0;
-let losses = 0;
-let guesses = 9;
-let soFar = [];
-let userGuess;
-let computerChoice;
-let previousFlag = [];
-let wordView;
-let underScores = [];
-
-
-// On load, start game
-$(document).ready(function() {
-    //Generate random flag on game start 
-    randomizer();
-    startGame();
-
-
-});
-
-// DOM manipulation
-// Clear DOM
-function gameReset(){
-    $('#wins').empty();
-    $('#blank-spots').empty();
-    $('#guess-attempts').empty();
-    $('#letters-used').empty();
-    computerChoice = alphabet[Math.floor(Math.random () * alphabet.length)];
-}
-
-// Randomizer function for generating random flag and country
-function randomizer(i){
-
-    let randomFlag = flagGuess[Math.floor(Math.random() * (flagGuess.length+1))];
-    let randomCountryName = randomFlag.name;
-    let randomFlagImage = randomFlag.flagImage;
-    if(previousFlag.includes(randomFlag) === true ){
-        randomizer()
-    } else {
-        console.log(randomCountryName)
-        previousFlag.push(randomFlagImage)
-        console.log(randomFlagImage)
-        $('#flag-column').append('<img src='+randomFlagImage+'/>')
-
-        let splitCountry = randomCountryName.split('');
-        for(i in splitCountry){
-            underScores.push("_");
-            $("#blank-spots").append(`${underScores[i]} `);
+var hangFlag = {
+    flagGuess : {
+        Andorra : {
+            name: 'Andorra',
+            flagImage: 'http://flags.fmcdn.net/data/flags/w580/ad.png'
+        },
+        Azerbaijan: {
+            name: 'Azerbaijan',
+            flagImage: 'http://flags.fmcdn.net/data/flags/w580/az.png'
+        }, 
+        Argentina: {
+            name: 'Argentina',
+            flagImage: 'http://flags.fmcdn.net/data/flags/w580/ar.png'
+        },
+        Brazil: {
+            name:'Brazil',
+            flagImage: 'http://flags.fmcdn.net/data/flags/w580/br.png'
+        },
+        Canada: {
+            name:'Canada',
+            flagImage: 'http://flags.fmcdn.net/data/flags/w580/ca.png'
+        },
+        France: {
+            name:'France',
+            flagImage: 'http://flags.fmcdn.net/data/flags/w580/fr.png'
+        },
+        Germany: {
+            name:'Germany',
+            flagImage: 'http://flags.fmcdn.net/data/flags/w580/de.png'
+        },
+        Ghana: {
+            name:'Ghana',
+            flagImage: 'http://flags.fmcdn.net/data/flags/w580/gh.png'
+        },
+        Greece: {
+            name:'Greece',
+            flagImage: 'http://flags.fmcdn.net/data/flags/w580/gr.png'
+        },
+        India: {
+            name:'India',
+            flagImage: 'http://flags.fmcdn.net/data/flags/w580/in.png'
+        },
+        Italy: {
+            name:'Italy',
+            flagImage: 'http://flags.fmcdn.net/data/flags/w580/it.png'
+        }, 
+        Japan: {
+            name:'Japan',
+            flagImage: 'http://flags.fmcdn.net/data/flags/w580/jp.png'
+        },
+        Kenya: {
+            name:'Kenya',
+            flagImage: 'http://flags.fmcdn.net/data/flags/w580/ke.png'
+        },
+        Jamaica: {
+            name:'Jamaica',
+            flagImage: 'http://flags.fmcdn.net/data/flags/w580/jm.png'
+        },
+        Turkey: {
+            name:'Turkey',
+            flagImage: 'http://flags.fmcdn.net/data/flags/w580/tr.png'
         }
+    },
 
-        return randomFlagImage
+    // Variables that set the initial state of the game
+    // Set the key value pairs
+    wordsInPlay: null,
+    lettersOfTheWord: [],
+    matchedLetters: [],
+    guessedLetters: [],
+    guessesLeft: 0,
+    totalGuesses: 0,
+    letterGuessed: null,
+    wins: 0,
+
+    // The setupGame method is called when the page first loads
+    setupGame: function(){
+        // This will pick a random word
+        var objKeys = Object.keys(this.flagGuess);
+        this.wordInPlay = objKeys[Math.floor(Math.random() * objKeys.length)];
+
+        // Split the chosen word up into its individual letters.
+        this.lettersOfTheWord = this.wordInPlay.split("");
+        // Builds the representation of the word, trying to guess and displays it on the page.
+        // At the start it will be all underscores since we haven't guessed any letters ("_ _ _ _").
+        this.rebuildWordView();
+        // This function sets the number of guesses the user gets, and renders it to the HTML.
+        this.processUpdateTotalGuesses();
+    },
+
+    // This function is run whenever the user guesses a letter..
+    updatePage: function(){
+        // If the user has no guesses left, restart the game.
+        if(this.guessesLeft === 0) {
+            this.restartGame();
+        } else {
+            // Check for and handle incorrect guesses.
+            this.updateGuesses(letter);
+
+            // Check for and handle correct guesses.
+            this.updateMatchedLetters(letter);
+
+            // Rebuild the view of the word. Guessed letters are revealed, unguessed letters have a "_".
+            this.rebuildWordView();
+
+            // If the user wins, restart the game.
+            if (this.updateWins() === true) {
+            this.restartGame();
+            }
+        }
+    },
+
+    // This function governs what happens when the user makes an incorrect guess (that they haven't guessed before).
+    updateGuesses: function(letter) {
+        // If the letter is not in the guessedLetters array, and the letter is not in the lettersOfTheWord array..
+        if((this.guessedLetters.indexOf(letter) === -1) && (this.lettersOfTheWord.indexOf(letter) === -1)) {
+            // Add the letter to the guessedLetters array.
+            this.guessedLetters.push(letter); 
+
+            // Decrease guesses by one 
+            this.guessesLeft--;
+
+            // Update guesses remaining and guesses letters on the page.
+            $("#guesses-remaining").append(this.guessesLeft);
+            $('#letters-used').append(this.guessedLetters.join(', '));
+        }
     }
-};
-
-// Start new word expression
 
 
-// const country = function() {  
-//     // let targetPerson = pickRandomWord();    
-//     wordView = flagGuess[randNum];
-//     // Convert target word to array of letters
-//     // Create word-in-progress word array with same length as target word array that contains “_”
-//     // Display word-in-progress word array to DOM
-//     $("#blank-spots").empty();
-//     for (let i = 0; i < wordView.name.length; i++) {
-//         underScores.push("_");
-//         $("#blank-spots").append(`${underScores[i]} `);
-//     }
-//     return wordView;
-// };
-// Reset function
-
-// Game function 
-function startGame() {
-    // document.onkeypress = function(letter){
-    // }
-    // country();
 }
-//On page load
