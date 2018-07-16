@@ -48,12 +48,12 @@
       <div class="columns">
           <div class="column is-three-fifths" style="background-color:gray; margin-right: 20px; height:400px">
             <div class="row">
-              <div>Start by pressing any key to begin</div>
+              <div>Welcome</div>
               <div class="columns">
                   <div class="column">
                     <div class="box">
-                      <p class="title is-5">Flexible column</p>
-                      <p class="subtitle">This column will take up the remaining space available.</p>
+                      <p class="title is-5">Start by pressing any key to begin</p>
+                      <p class="subtitle">Guess the flag</p>
                       <div class="row">
                         <div class="columns">
                           <div class="column">Wins</div>
@@ -63,7 +63,7 @@
 
                       <div class="row">
                         <div class="columns">
-                          <div class="column" id="blank-spots"> _ _ _ _ _ _ _ </div>
+                          <div class="column" id="blank-spots"></div>
                         </div>
                       </div>
 
@@ -86,10 +86,13 @@
                 </div>
             </div>
           </div>
-          <div class="column" id="flag-column" style="background-color:thistle; height:400px">Flag:</div>
+          <div class="column" id="flag-column" style="background-color:thistle; height:400px">
+            <div>Flag:</div>
+          </div>
+          
       </div>        
 
-      <div class="field">
+      <!-- <div class="field">
         <p class="control">
           <span class="select">
             <select>
@@ -97,12 +100,12 @@
             </select>
           </span>
         </p>
-      </div>
+      </div> -->
 
-      <div class="buttons">
-        <a class="button is-primary">Primary</a>
+      <!-- <div class="buttons" style="float: right;">
+        <a class="button is-primary" id="random-button">Primary</a>
         <a class="button is-link">Link</a>
-      </div>
+      </div> -->
     </div>
   </body>
 </html>

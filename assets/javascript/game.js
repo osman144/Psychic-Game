@@ -56,8 +56,21 @@ let soFar = [];
 let userGuess;
 let computerChoice;
 let previousFlag = [];
+let wordView;
+let underScores = [];
+
+
+// On load, start game
+$(document).ready(function() {
+    //Generate random flag on game start 
+    randomizer();
+    startGame();
+
+
+});
 
 // DOM manipulation
+// Clear DOM
 function gameReset(){
     $('#wins').empty();
     $('#blank-spots').empty();
@@ -66,55 +79,52 @@ function gameReset(){
     computerChoice = alphabet[Math.floor(Math.random () * alphabet.length)];
 }
 
-// Randomizer function for generating random flag
+// Randomizer function for generating random flag and country
 function randomizer(i){
-    let randomFlag = flagGuess[Math.floor(Math.random() * (flagGuess.length+1))].name;
+
+    let randomFlag = flagGuess[Math.floor(Math.random() * (flagGuess.length+1))];
+    let randomCountryName = randomFlag.name;
+    let randomFlagImage = randomFlag.flagImage;
     if(previousFlag.includes(randomFlag) === true ){
         randomizer()
     } else {
-        previousFlag.push(randomFlag)
-        console.log(randomFlag)
-        return randomFlag
+        console.log(randomCountryName)
+        previousFlag.push(randomFlagImage)
+        console.log(randomFlagImage)
+        $('#flag-column').append('<img src='+randomFlagImage+'/>')
+
+        let splitCountry = randomCountryName.split('');
+        for(i in splitCountry){
+            underScores.push("_");
+            $("#blank-spots").append(`${underScores[i]} `);
+        }
+
+        return randomFlagImage
     }
 };
-//On page load
-$(document).ready(function() {
+
+// Start new word expression
 
 
-    // flagGuess.forEach(randomizer)
-    randomizer()
-
-    // Function to randomly choose new flag
-    function randomizerThing(){
-
-        // flagGuess.forEach(function(){
-        //     let randomFlag = flagGuess
-        // })
-
-        // for(i in flagGuess[i]){
-        //     let randomFlag = Math.floor(Math.random*(flagGuess[i]+1));
-        // }
-        // return randomFlag
-    }
-    
-    let andorra = flagGuess[0].flagImage
-    $('#flag-column').append('<img src='+andorra+'/>')
-
-// $('#doc').hide();
-
-function startGame(){
-//This program will choose a random letter and the player will guess 
-computerChoice = alphabet[Math.floor(Math.random () * alphabet.length)];
-console.log(computerChoice)
+// const country = function() {  
+//     // let targetPerson = pickRandomWord();    
+//     wordView = flagGuess[randNum];
+//     // Convert target word to array of letters
+//     // Create word-in-progress word array with same length as target word array that contains “_”
+//     // Display word-in-progress word array to DOM
+//     $("#blank-spots").empty();
+//     for (let i = 0; i < wordView.name.length; i++) {
+//         underScores.push("_");
+//         $("#blank-spots").append(`${underScores[i]} `);
+//     }
+//     return wordView;
+// };
+// Reset function
 
 // Game function 
-    
-
-
-
-document.onkeypress = function(letter){
-    gameLetter(letter)
+function startGame() {
+    // document.onkeypress = function(letter){
+    // }
+    // country();
 }
-}
-
-});
+//On page load
