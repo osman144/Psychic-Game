@@ -156,19 +156,21 @@ var hangFlag = {
     rebuildWordView: function() {
         // start with an empty string.
         var wordView = "";
+        var flagView= "";
 
         // Loop through the letters of the word trying to guess..
         for (var i = 0; i < this.lettersOfTheWord.length; i++) {
             // If the current letter has been guessed, display that letter.
             if (this.matchedLetters.indexOf(this.lettersOfTheWord[i]) !== -1) {
-            wordView += this.lettersOfTheWord[i];
+                wordView += this.lettersOfTheWord[i];
             }
             // If it hasn't been guessed, display a "_" instead.
             else {
-            wordView += "&nbsp;_&nbsp;";
+                wordView += "&nbsp;_&nbsp;";
             }
-        }
+        };
         // Update the page with the new string
+        console.log(wordView)
         $('#current-word').append(wordView);
     },
 
